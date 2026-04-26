@@ -1,14 +1,15 @@
-# Use lightweight Java image
+# Step 1: Build the app
+FROM maven:3.9.9-eclipse-temurin-17 AS build
+
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Step 2: Run the app
 FROM eclipse-temurin:17-jdk-jammy
 
-# Set working directory
 WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 
-# Copy jar file (after build)
-COPY target/*.jar app.jar
-
-# Expose port (Spring Boot default)
 EXPOSE 8080
-
-# Run the app
 ENTRYPOINT ["java","-jar","app.jar"]
