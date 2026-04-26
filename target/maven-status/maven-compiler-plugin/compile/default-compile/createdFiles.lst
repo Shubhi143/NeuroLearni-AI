@@ -1,0 +1,5 @@
+com\learning\assistant\NeurolearnApplication.class
+com\learning\assistant\Service\LearningService.class
+com\learning\assistant\Controller\LearningController.class
+com\learning\assistant\dto\EvaluationRequest.class
+com\learning\assistant\dto\LearningRequest.class
